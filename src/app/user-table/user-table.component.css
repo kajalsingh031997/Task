@@ -1,0 +1,19 @@
+@media (min-width: 992px){
+    .user-heading{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 1em;
+    }
+    .filter{
+        width: 20%;
+    }
+    .user-footer{
+        float: right;
+    }
+}
+thead{
+    background: #0d6ed3;
+    color: white;
+}
+

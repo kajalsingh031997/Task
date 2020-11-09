@@ -1,0 +1,40 @@
+<div class="user-heading">
+    <h3>User Table</h3>
+    <div class="form-group filter">
+        <select name="city" class="form-control" [ngModel]="cityFilter" (change)="onFilterChange($event)">
+            <option value="DELHI">DELHI</option>
+            <option value="GURGAON">GURGAON</option>
+            <option value="MUMBAI">MUMBAI</option>
+            <option value="PUNE">PUNE</option>
+        </select>
+    </div>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Bank Name</th>
+            <th>Branch</th>
+            <th>City</th>
+            <th>District</th>
+            <th>State</th>
+            <th>IFSC Code</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of userList | paginate: { itemsPerPage: 10, currentPage: currentPage }">
+            <td>{{data.bank_name}}</td>
+            <td>{{data.branch}}</td>
+            <td>{{data.city}}</td>
+            <td>{{data.district}}</td>
+            <td>{{data.state}}</td>
+            <td>{{data.ifsc}}</td>
+            <td>{{data.address}}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="user-footer">
+    <div id="pagination">
+        <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
+    </div>   
+</div>

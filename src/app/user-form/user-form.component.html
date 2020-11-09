@@ -1,0 +1,85 @@
+<div class="user-div">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 user-form">
+        <h2 class="heading">User Form</h2>
+        <form name="form" #userForm="ngForm" (ngSubmit)="userForm.form.valid && onSubmit()" novalidate>
+            <!--firstname-->
+            <div class="form-group">
+                <input type="text" [(ngModel)]="userData.firstName" name="firstName" class="form-control"
+                    placeholder="First Name" #firstName="ngModel"
+                    [ngClass]="{ 'is-invalid': userForm.submitted && firstName.invalid }" required>
+                <div *ngIf="userForm.submitted && firstName.invalid" class="invalid-feedback">
+                    <div *ngIf="firstName.errors.required">First Name is required</div>
+                </div>
+            </div>
+
+            <!--Last name-->
+            <div class="form-group">
+                <input type="text" [(ngModel)]="userData.lastName" name="lastName" class="form-control"
+                    placeholder="Last Name" #lastName="ngModel" [ngClass]="{ 'is-invalid': userForm.submitted && lastName.invalid }" required>
+                <div *ngIf="userForm.submitted && lastName.invalid" class="invalid-feedback">
+                    <div *ngIf="lastName.errors.required">Last Name is required</div>
+                </div>
+            </div>
+
+            <!--gender-->
+            <div class="form-group">
+                <select name="gender" class="form-control" [(ngModel)]="userData.gender" #gender="ngModel"
+                    [ngClass]="{ 'is-invalid': userForm.submitted && gender.invalid }" required>
+                    <option disabled selected value="undefined">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+                </select>
+                <div *ngIf="userForm.submitted && gender.invalid" class="invalid-feedback">
+                    <div *ngIf="gender.errors.required">Gender is required</div>
+                </div>
+            </div>
+
+            <!--phone number-->
+            <div class="form-group">
+                <input type="number" name="phoneNo" class="form-control" [(ngModel)]="userData.phoneNo"
+                    placeholder="Phone Number" #phoneNo="ngModel" [pattern]="phoneRegex"
+                    [ngClass]="{ 'is-invalid': userForm.submitted && phoneNo.invalid }" required>
+                <div *ngIf="userForm.submitted && phoneNo.invalid" class="invalid-feedback">
+                    <div *ngIf="phoneNo.errors.required">Phone Number is required</div>
+                    <div *ngIf="phoneNo.errors.pattern">Phone Number should not exceed 10</div>
+                </div>
+            </div>
+
+            <!--email-->
+            <div class="form-group">
+                <input type="email" [(ngModel)]="userData.email" name="email" class="form-control" placeholder="Email"
+                    #email="ngModel" [ngClass]="{ 'is-invalid': userForm.submitted && email.invalid }" required>
+                <div *ngIf="userForm.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors.required">Email is required</div>
+                    <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                </div>
+            </div>
+
+            <!--Account number-->
+            <div class="form-group">
+                <input type="number" [(ngModel)]="userData.accountNo" name="accountNo" class="form-control"
+                    placeholder="Account No." #accountNo="ngModel"
+                    [ngClass]="{ 'is-invalid': userForm.submitted && accountNo.invalid }" required>
+                <div *ngIf="userForm.submitted && accountNo.invalid" class="invalid-feedback">
+                    <div *ngIf="accountNo.errors.required">Account number is required</div>
+                </div>
+            </div>
+
+            <!--ifsc-->
+            <div class="form-group">
+                <input type="text" [(ngModel)]="userData.ifsc" name="ifsc" class="form-control" placeholder="IFSC Code"
+                    #ifsc="ngModel" [ngClass]="{ 'is-invalid': userForm.submitted && ifsc.invalid }"
+                    [pattern]="ifscRegex" required>
+                <div *ngIf="userForm.submitted && ifsc.invalid" class="invalid-feedback">
+                    <div *ngIf="ifsc.errors.required">IFSC is required</div>
+                    <div *ngIf="ifsc.errors.pattern">IFSC should be alphanumeric</div>
+                </div>
+            </div>
+
+            <div class="form-group submit-button">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

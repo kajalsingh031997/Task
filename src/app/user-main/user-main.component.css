@@ -1,0 +1,14 @@
+.main-page{
+    text-align: center;
+    position: absolute;
+    left: 32%;
+    top: 35%;
+    transform: translate(10px, 200px);
+}
+.btn{
+    margin-right: 10px;
+    width: 160px;
+}
+.button-div{
+    margin-top: 3em;
+}
