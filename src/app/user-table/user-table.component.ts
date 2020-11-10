@@ -27,7 +27,7 @@ export class UserTableComponent implements OnInit {
 
   onFilterChange(event){
     this.cityFilter = event.target.value;
-    this.route.navigate(['/table'], { queryParams: { filter: this.cityFilter } });
+    this.route.navigate(['/user-table'], { queryParams: { filter: this.cityFilter } });
     this.getUserDataList();
   }
 

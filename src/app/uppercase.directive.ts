@@ -1,10 +1,14 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
   selector: '[appUppercase]'
 })
 export class UppercaseDirective {
 
-  constructor() { }
+  constructor(private ref:ElementRef) { }
+
+  ngOnInit(){
+    this.ref.nativeElement.style.textTransform = 'uppercase';
+  }
 
 }
