@@ -39,20 +39,19 @@
             <div class="form-group">
                 <input type="number" name="phoneNo" class="form-control" [(ngModel)]="userData.phoneNo"
                     placeholder="Phone Number" #phoneNo="ngModel" [pattern]="phoneRegex"
-                    [ngClass]="{ 'is-invalid': userForm.submitted && phoneNo.invalid }" required>
+                    [ngClass]="{ 'is-invalid': userForm.submitted && phoneNo.invalid }">
                 <div *ngIf="userForm.submitted && phoneNo.invalid" class="invalid-feedback">
-                    <div *ngIf="phoneNo.errors.required">Phone Number is required</div>
-                    <div *ngIf="phoneNo.errors.pattern">Phone Number should not exceed 10</div>
+                    <div *ngIf="phoneNo.errors.pattern">Phone Number max 10 digit</div>
                 </div>
             </div>
 
             <!--email-->
             <div class="form-group">
                 <input type="email" [(ngModel)]="userData.email" name="email" class="form-control" placeholder="Email"
-                    #email="ngModel" [ngClass]="{ 'is-invalid': userForm.submitted && email.invalid }" required>
+                    #email="ngModel" [ngClass]="{ 'is-invalid': userForm.submitted && email.invalid }" [pattern]="emailRegex" required>
                 <div *ngIf="userForm.submitted && email.invalid" class="invalid-feedback">
                     <div *ngIf="email.errors.required">Email is required</div>
-                    <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                    <div *ngIf="email.errors.email || email.errors.pattern">Email must be a valid email address</div>
                 </div>
             </div>
 

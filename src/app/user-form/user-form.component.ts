@@ -10,6 +10,7 @@ export class UserFormComponent implements OnInit {
   userData: any = {};
   phoneRegex = "^((\\+91-?)|0)?[0-9]{10}$"; 
   ifscRegex = "^[a-zA-Z0-9]{10}$";
+  emailRegex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
 
   constructor() { }
 
@@ -17,7 +18,7 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.userData);
+    console.log(JSON.stringify(this.userData));
   }
 
 }
